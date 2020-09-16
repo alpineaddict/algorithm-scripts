@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-# bubblesort.py
+"""
+Sort an array using the bubble sort algorithm. 
+"""
 
 def bubble_Sort(arr):
     swap_happened = True

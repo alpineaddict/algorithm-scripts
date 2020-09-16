@@ -1,3 +1,5 @@
+""" Perform factorial algorithm on a number in recrusion fashion """
+
 def factorial_recur(n):
     if n == 0:
         return(1)

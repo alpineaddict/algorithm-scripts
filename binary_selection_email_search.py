@@ -1,110 +1,114 @@
 #!/usr/bin/env python
 
-# BinarySelection_EmailSearch will prompt a user for a number of email addresses
-# to generate and for one email address to search for. The script will then run
-# a binary selection algorithm on the list and search for the email address that
-# was specified by the user. The script will use the runtime analyzer function
-# to record and report the performance time to complete both operations
+"""
+BinarySelection_EmailSearch will prompt a user for a number of email addresses
+to generate and for one email address to search for. The script will then run
+a binary selection algorithm on the list and search for the email address that
+was specified by the user. The script will use the runtime analyzer function
+to record and report the performance time to complete both operations
 
-# Script Outline
-# User prompt for # of emails to generate as well as email address to search for
-# Run binary select recursive function to find the email
-# Use runtime analyzer to report back performance results for finding email
-
+Script Outline
+User prompt for # of emails to generate as well as email address to search for.
+Run binary select recursive function to find the email.
+Use runtime analyzer to report back performance results for finding email.
+"""
 
 import string, random
 from time import time
 from random import randint
 
 # Algorithm & performance analyzer
-def binary_Section_Email_Search(emailToSearch, nameList):
+def binarySectionEmailSearch(email_to_search, name_list):
+    """Accept email to search for as well as list of names"""
     start = 0
-    stop  = len(nameList) - 1
+    stop  = len(name_list) - 1
     while start <= stop: 
-        mid = (start + stop) // 2    
-        if emailToSearch == nameList[mid]:
-            return f'{emailToSearch} found at index: {mid}'
-        elif emailToSearch > nameList[mid]:
+        mid = (start + stop) // 2
+        if email_to_search == name_list[mid]:
+            return f'{email_to_search} found at index: {mid}'
+        elif email_to_search > name_list[mid]:
             start = mid + 1
         else: 
             stop = mid - 1
-    return f'{emailToSearch} not found in list.'
+    return f'{email_to_search} not found in list.'
 
-def binary_Section_Email_Search_Recursion(emailToSearch, nameList, start, stop):
+def binarySectionEmailSearchRecursion(email_to_search, name_list, start, stop):
+    """
+    Accept email to search for as well as list of names in addition to a 
+    start and stop point to utilize recursion.
+    """
     if start > stop: 
-        return f'{emailToSearch} not found in list!'
+        return f'{email_to_search} not found in list!'
     else: 
         mid = (start + stop) // 2
-        if emailToSearch == nameList[mid]:
-            return f'{emailToSearch} found at index: {mid}'
-        elif emailToSearch > nameList[mid]:
-            return binary_Section_Email_Search_Recursion(
-                emailToSearch, nameList, mid+1, stop)
+        if email_to_search == name_list[mid]:
+            return f'{email_to_search} found at index: {mid}'
+        elif email_to_search > name_list[mid]:
+            return binarySectionEmailSearchRecursion(
+                email_to_search, name_list, mid+1, stop)
         else:
-            return binary_Section_Email_Search_Recursion(
-                emailToSearch, nameList, start, mid-1)
+            return binarySectionEmailSearchRecursion(
+                email_to_search, name_list, start, mid-1)
 
-def analyze_Func(funcName, arr, *args):
+def analyzeFunc(func_name, arr, *args):
     '''
     Take in function name and array as parameters. Measure time in seconds
     to run function and print the output. 
     '''
     
-    if 'generate' in funcName.__name__.lower():
+    if 'generate' in func_name.__name__.lower():
         start = time()
-        funcName(arr, *args)
+        func_name(arr, *args)
         stop  = time()
         seconds = stop - start
-        print(f'{funcName.__name__.capitalize()}\t\t -> \
+        print(f'{func_name.__name__.capitalize()}\t\t -> \
             Elapsed time: {seconds:.5f}')
-    else: 
+    else:
         start = time()
-        print(funcName(arr, *args))
+        print(func_name(arr, *args))
         stop  = time()
         seconds = stop - start
-        print(f'{funcName.__name__.capitalize()}\t\t -> \
+        print(f'{func_name.__name__.capitalize()}\t\t -> \
             Elapsed time: {seconds:.5f}')
 
 # Email generation functions
-# Get input from user for number of emails to generate and address to search for
-def get_User_Input():
-    numberOfEmails = int(input('How many email addresses would you like to ' +
+def getUserInput():
+    """
+    Get user input for number of emails to generate & address to search for
+    """
+    number_of_emails = int(input('How many email addresses would you like to ' +
                         'generate? '))
-    emailToSearch  = input('Please an email address to search for: ')
-    return numberOfEmails, emailToSearch
+    email_to_search  = input('Please an email address to search for: ')
+    return number_of_emails, email_to_search
 
 # Generate list of email addresses, add search email to list
-def generate_List_Of_Emails(numberOfEmails, emailToSearch):
+def generateListOfEmails(number_of_emails, email_to_search):
+    """Generate list of emails based off of user input"""
     '''
     Domains for email addresses: [@example.com, @example.org, @example.info]
     '''
-    nameList = []
+    name_list = []
     alphabet = string.ascii_lowercase
-    domainList = ['@example.com', '@example.org', '@example.info']
+    domain_list = ['@example.com', '@example.org', '@example.info']
 
-    # Create list totalling the value of numberOfEmails
-    while len(nameList) < numberOfEmails:
+    while len(name_list) < number_of_emails:
         name = ''
         for num in range(12):
             name += alphabet[randint(0, len(alphabet)-1)]
-        emailAddr = name + domainList[randint(0, len(domainList)-1)]
-        nameList.append(emailAddr)
+        email_addr = name + domain_list[randint(0, len(domain_list)-1)]
+        name_list.append(email_addr)
 
-    # Append email to search onto the list, then sort entire list
-    nameList.append(emailToSearch)
-    nameList = sorted(nameList)
+    name_list.append(email_to_search)
+    name_list = sorted(name_list)
 
-    # return sorted list
-    return nameList
+    return name_list
 
 
-  #####################
- # Program execution #
-#####################
-numberOfEmails, emailToSearch = get_User_Input()
-nameList = generate_List_Of_Emails(numberOfEmails, emailToSearch)
+if __name__ == '__main__':
+    number_of_emails, email_to_search = getUserInput()
+    name_list = generateListOfEmails(number_of_emails, email_to_search)
+    analyzeFunc(binarySectionEmailSearch, email_to_search, name_list)
+    analyzeFunc(binarySectionEmailSearchRecursion, email_to_search, name_list, 0,
+                len(name_list) -1)
+    analyzeFunc(generateListOfEmails, number_of_emails, email_to_search)
 
-analyze_Func(binary_Section_Email_Search, emailToSearch, nameList)
-analyze_Func(binary_Section_Email_Search_Recursion, emailToSearch, nameList, 0,
-            len(nameList) -1)
-analyze_Func(generate_List_Of_Emails, numberOfEmails, emailToSearch)

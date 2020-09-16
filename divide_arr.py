@@ -1,4 +1,6 @@
-from mergesort import merge_sorted
+from merge_sort import mergeSorted
+
+""" Use the merge sort algorithm to divide and sort an array """
 
 def divide_arr(arr):
     if len(arr) < 2:

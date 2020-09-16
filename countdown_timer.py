@@ -1,3 +1,8 @@
+"""
+Simple countdown app that can utilize a recursion function to count down or
+an iterative function.
+"""
+
 import time
 
 def recur_countdown_timer(n):
@@ -15,8 +20,7 @@ def iter_countdown_timer(n):
         n -= 1
     print(n)
 
-z = 5
+Z = 5
 print(f'Counting down from {z}: ')
 # iter_countdown_timer(z)
 print(recur_countdown_timer(z))
-
