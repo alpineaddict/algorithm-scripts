@@ -13,7 +13,7 @@ from random import randint
 from sorting_algorithms import *
 import sys; sys.setrecursionlimit(1000000)
 
-def getUserInput():
+def get_user_input():
     '''
     Get input from user for the size of the array (number of items), the
     desired max value of any number within the array, and lastly the number
@@ -25,7 +25,7 @@ def getUserInput():
 
     return size_of_list, max_number, iterations
 
-def buildArray(size_of_list, max_number):
+def build_array(size_of_list, max_number):
     '''
     Generate list of random values based off of user input and run algorithms
     with said input. Return array. 
@@ -35,7 +35,7 @@ def buildArray(size_of_list, max_number):
 
     return arr
 
-def analyzeFunc(func_name, arr):
+def analyze_func(func_name, arr):
     '''
     Take in function name and array as parameters. Measure time in seconds
     to run function and print the output. 
@@ -52,19 +52,19 @@ if __name__ == '__main__':
     counter = 1
     print('Algorithms file loaded.')
     print('-'*40)
-    size_of_list, max_number, iterations = getUserInput()
-    arr = buildArray(size_of_list, max_number)
+    size_of_list, max_number, iterations = get_user_input()
+    arr = build_array(size_of_list, max_number)
 
     for num in range(iterations):   
         print(f'Run: {num +1}')
         arrCopy = arr.copy()
-        analyzeFunc(quickSort, arr)
-        analyzeFunc(bubbleSort, arrCopy)
-        analyzeFunc(mergeSort, arr)
-        analyzeFunc(selectionSort, arr)
-        analyzeFunc(sorted, arr)
+        analyze_func(quickSort, arr)
+        analyze_func(bubbleSort, arrCopy)
+        analyze_func(mergeSort, arr)
+        analyze_func(selectionSort, arr)
+        analyze_func(sorted, arr)
         print('-'*40)
     print('Finished! Terminating program.')
 
     # for num in range(5):
-    #     analyzeFunc(quick_Sort, arr)
+    #     analyze_func(quick_Sort, arr)

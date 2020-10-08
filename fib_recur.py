@@ -1,21 +1,21 @@
 """ Simple fibonacci sequence algorithm """
 
-def fibRecur(n):
+def fib_recur(n):
     if n == 0:
         return(0)
     elif n == 1:
         return(1)        
     else: 
-        return(fibRecur(n-1) + fibRecur(n-2))
+        return(fib_recur(n-1) + fib_recur(n-2))
 
-def fibRunner(z):
-    print(f'The {z}th number in the fibonacci sequence is {fibRecur(z)}')
+def fib_runner(z):
+    print(f'The {z}th number in the fibonacci sequence is {fib_recur(z)}')
 
 z = 0
-fibRunner(z)
+fib_runner(z)
 
 z = 1
-fibRunner(z)
+fib_runner(z)
 
 z = 10
-fibRunner(z)
+fib_runner(z)

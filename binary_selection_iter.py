@@ -2,7 +2,7 @@
 Sort a given array using the binary selection algorithm.
 """
 
-def binarySelectionIter(n, arr):
+def binary_selection_iter(n, arr):
     start = 0
     stop  = len(arr) - 1
     while start <= stop: 
@@ -15,18 +15,18 @@ def binarySelectionIter(n, arr):
             stop = mid - 1
     return f'{n} not found in list.'
 
-def createList(max_val):
+def create_list(max_val):
     arr = []
     [arr.append(num) for num in range(1, max_val+1)]
     return arr
 
-l =  createList(50)
+l =  create_list(50)
 
 
 # for num in l:
-#     print(binarySelectionIter(num, l))
+#     print(binary_selection_iter(num, l))
 
 l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 #  [ 0  1  2  3  4  5  6  7  8  9 ]
 # initial middle of l is 4, or value of 5
-print(binarySelectionIter(7, l))
+print(binary_selection_iter(7, l))

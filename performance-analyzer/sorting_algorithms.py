@@ -3,9 +3,9 @@ Various sorting algorithms listed below to use in conjunction with
 performance analyzer script to measure run time of different algorithms
 """
 
-def quickSort(array):
+def quick_sort(array):
     """ Accept an array of unsorted integers and return array of sorted
-    integers via quicksort algorithm. """
+    integers via quick_sort algorithm. """
     if len(array) < 2: 
         return(array)
     else: 
@@ -18,11 +18,11 @@ def quickSort(array):
                 equal.append(num)
             else: 
                 larger.append(num)
-        return quickSort(smaller) + equal + quickSort(larger)
+        return quick_sort(smaller) + equal + quick_sort(larger)
 
-def mergeSorted(arr1,arr2):
+def merge_sorted(arr1,arr2):
     """ Accept 2 arrays of unsorted integers and return array of sorted
-    integers via mergesort algorithm. """
+    integers via merge_sort algorithm. """
     sorted_arr = []
     i, j = 0, 0
 
@@ -42,18 +42,18 @@ def mergeSorted(arr1,arr2):
 
     return sorted_arr
 
-def mergeSort(array):
-    """ Perform mergesort algorithm on array of unsorted integers. """
+def merge_sort(array):
+    """ Perform merge_sort algorithm on array of unsorted integers. """
     if len(array) < 2:
         return array[:]
     else:
         middle = len(array)//2
-        l1 = mergeSort(array[:middle])
-        l2 = mergeSort(array[middle:])
-        return mergeSorted(l1, l2)
+        l1 = merge_sort(array[:middle])
+        l2 = merge_sort(array[middle:])
+        return merge_sorted(l1, l2)
 
-def bubbleSort(array):
-    """ Perform bubblesort algorithm on array of unsorted integers. """
+def bubble_sort(array):
+    """ Perform bubble_sort algorithm on array of unsorted integers. """
     swap_happened = True
     while swap_happened:
         swap_happened = False
@@ -62,8 +62,8 @@ def bubbleSort(array):
                 swap_happened = True
                 array[num], array[num+1] = array[num+1], array[num]
 
-def selectionSort(array):
-    """ Perform selectionsort algorithm on array of unsorted integers. """
+def selection_sort(array):
+    """ Perform selection_sort algorithm on array of unsorted integers. """
     counter = 0
     while counter < len(array):
         for num in range(counter, len(array)):

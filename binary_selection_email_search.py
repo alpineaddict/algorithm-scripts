@@ -18,7 +18,7 @@ from time import time
 from random import randint
 
 # Algorithm & performance analyzer
-def binarySectionEmailSearch(email_to_search, name_list):
+def binary_section_email_search(email_to_search, name_list):
     """Accept email to search for as well as list of names"""
     start = 0
     stop  = len(name_list) - 1
@@ -32,7 +32,7 @@ def binarySectionEmailSearch(email_to_search, name_list):
             stop = mid - 1
     return f'{email_to_search} not found in list.'
 
-def binarySectionEmailSearchRecursion(email_to_search, name_list, start, stop):
+def binary_section_email_search_recursion(email_to_search, name_list, start, stop):
     """
     Accept email to search for as well as list of names in addition to a 
     start and stop point to utilize recursion.
@@ -44,13 +44,13 @@ def binarySectionEmailSearchRecursion(email_to_search, name_list, start, stop):
         if email_to_search == name_list[mid]:
             return f'{email_to_search} found at index: {mid}'
         elif email_to_search > name_list[mid]:
-            return binarySectionEmailSearchRecursion(
+            return binary_section_email_search_recursion(
                 email_to_search, name_list, mid+1, stop)
         else:
-            return binarySectionEmailSearchRecursion(
+            return binary_section_email_search_recursion(
                 email_to_search, name_list, start, mid-1)
 
-def analyzeFunc(func_name, arr, *args):
+def analyze_func(func_name, arr, *args):
     '''
     Take in function name and array as parameters. Measure time in seconds
     to run function and print the output. 
@@ -72,7 +72,7 @@ def analyzeFunc(func_name, arr, *args):
             Elapsed time: {seconds:.5f}')
 
 # Email generation functions
-def getUserInput():
+def get_user_input():
     """
     Get user input for number of emails to generate & address to search for
     """
@@ -82,7 +82,7 @@ def getUserInput():
     return number_of_emails, email_to_search
 
 # Generate list of email addresses, add search email to list
-def generateListOfEmails(number_of_emails, email_to_search):
+def generate_list_of_emails(number_of_emails, email_to_search):
     """Generate list of emails based off of user input"""
     '''
     Domains for email addresses: [@example.com, @example.org, @example.info]
@@ -105,10 +105,10 @@ def generateListOfEmails(number_of_emails, email_to_search):
 
 
 if __name__ == '__main__':
-    number_of_emails, email_to_search = getUserInput()
-    name_list = generateListOfEmails(number_of_emails, email_to_search)
-    analyzeFunc(binarySectionEmailSearch, email_to_search, name_list)
-    analyzeFunc(binarySectionEmailSearchRecursion, email_to_search, name_list, 0,
+    number_of_emails, email_to_search = get_user_input()
+    name_list = generate_list_of_emails(number_of_emails, email_to_search)
+    analyze_func(binary_section_email_search, email_to_search, name_list)
+    analyze_func(binary_section_email_search_recursion, email_to_search, name_list, 0,
                 len(name_list) -1)
-    analyzeFunc(generateListOfEmails, number_of_emails, email_to_search)
+    analyze_func(generate_list_of_emails, number_of_emails, email_to_search)
 

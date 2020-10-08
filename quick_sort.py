@@ -1,11 +1,11 @@
     '''
     Input: Unsorted list of integers.
-    Returns sorted list of integers using quicksort algorithm.
+    Returns sorted list of integers using quick_sort algorithm.
     Note: This is not an in-place implementation.
     '''
 
-def quickSort(arr):
-    """Run quicksort algorithm on a given array"""
+def quick_sort(arr):
+    """Run quick_sort algorithm on a given array"""
     if len(arr) < 2: 
         return(arr)
     else: 
@@ -18,11 +18,11 @@ def quickSort(arr):
                 equal.append(num)
             else: 
                 larger.append(num)
-        return(quickSort(smaller) + equal + quickSort(larger))
+        return(quick_sort(smaller) + equal + quick_sort(larger))
 
 
 # xxxxxxxxxxxxxxxxxxxxxx Program execution xxxxxxxxxxxxxxxxxxxxxx
 # l = [6, 8, 1, 4, 10, 7, 8, 9, 3, 2, 5]
-# print(quickSort(l))
+# print(quick_sort(l))
 
 # xxxxxxxxxxxxxxxxxxxxxx   End execution   xxxxxxxxxxxxxxxxxxxxxx

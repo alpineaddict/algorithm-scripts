@@ -8,7 +8,7 @@ Steps
    are items still remaining in one of the lists
 """
 
-def mergeSort(arr1,arr2):
+def merge_sort(arr1,arr2):
     # print("Merge function called with lists below:")
     # print(f"left: {arr1} and right: {arr2}")
     sorted_arr = []
@@ -31,7 +31,7 @@ def mergeSort(arr1,arr2):
 
     return sorted_arr
 
-def mergeSort(arr):
+def merge_sort(arr):
     if len(arr) < 2:
         # print(f'Base condition reached with {arr[:]}')
         return arr[:]
@@ -40,21 +40,21 @@ def mergeSort(arr):
         # print('Current list to work with:', arr)
         # print('Left split:', arr[:middle])
         # print('Right slit: ', arr[middle:])
-        l1 = mergeSort(arr[:middle])
-        l2 = mergeSort(arr[middle:])
-        return mergeSort(l1, l2)
+        l1 = merge_sort(arr[:middle])
+        l2 = merge_sort(arr[middle:])
+        return merge_sort(l1, l2)
 
 
 
 # xxxxxxxxxxxxxxxxxxxxxx Program execution xxxxxxxxxxxxxxxxxxxxxx
 # if __name__ == '__main__':
     # l = [6, 8, 1, 4, 10, 7, 8, 9, 3, 2, 5]
-    # print(mergeSort(l))
+    # print(merge_sort(l))
 
     # xxxxxxxxxxxxxxxxxxxxxx   End execution   xxxxxxxxxxxxxxxxxxxxxx
 
 
-    # Originally used for merge sort before mergeSort implementation
+    # Originally used for merge sort before merge_sort implementation
     # l1 = [2,4,6,8,10]
     # l2 = [1,3,5,7,8,9]
-    # print(f'Merged list: {mergeSort(l1,l2)}')
+    # print(f'Merged list: {merge_sort(l1,l2)}')
